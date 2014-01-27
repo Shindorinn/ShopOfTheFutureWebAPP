@@ -1,0 +1,48 @@
+<div class="container-fluid">
+	<div ng-controller="ShoppinglistCtrl">
+    <h1>Shoppinglist</h1>
+		<br><a href="#/myshoppinglists">Terug naar alle shoppinglists</a><br><br>
+		<b>Huidige shoppinglist: {{getCurrentShoppinglistName()}} </b><br><br>
+		<table class="table table-striped" >
+			<thead>
+				<tr>
+					<th class="span3">Aantal</th>
+					<th class="span5">Barcode</th>
+					<th class="span8">Naam</th>
+					<th class="span5">Prijs</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in shoppingList.items">
+					<td>
+						{{item.amount}}
+					</td>			
+					<td>
+						{{item.barcode}}
+					</td>
+					<td>
+						{{item.name}}
+					</td>
+					<td>
+						{{item.price}} euro
+					</td>
+					<td>
+						<a ng-click="addOne(item.barcode)"><button class="btn"><i class="icon-plus-sign"></i></button></a>
+						<a ng-click="removeOne(item.barcode)"><button class="btn"><i class="icon-minus-sign"></i></button></a>
+						<a ng-click="removeAll(item.barcode)"><button class="btn"><i class="icon-remove-sign"></i></button></a>				
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>Totaal: {{getThisShoppinglistTotal(currentListId)}} euro</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<br><a ng-click="callSendCurrentListToProducts()" class="btn btn-primary" href="#/products/{{currentListId}}">Voeg product toe</a>
+		
+	</div>
+</div>

@@ -1,0 +1,50 @@
+<!doctype html5>
+<html ng-app="SotF">
+<head>
+  <title>Shop of the Future</title>
+  <script type="text/javascript" src="js/config.js"></script>
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/angular/angular.min.js"></script>
+<!--     <script src="lib/angularUi/ui-bootstrap-tpls-0.3.0.js"></script> -->
+	<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.4.0.js"></script>
+	
+	
+  <script src="lib/angularUi/maps/angular-google-maps.js"></script>
+  <script src="lib/angular/angular-resource.js"></script>
+  <script src="lib/angular/angular-cookies.js"></script>
+  <script src="lib/localize.js"></script>
+  <script src="i18n/resources-locale_default.js"></script>
+  <script src="lib/underscore/underscore.min.js"></script>
+  <script src="lib/jquery-ui.custom/js/jquery-ui.custom.min.js"></script>
+  <script src="lib/angularUi/date/date.js "></script>
+  <!-- <script src="js/bootstrap.min.js"></script> -->
+  <script src="lib/ui-utils/ui-utils.min.js"></script>
+  <script src="lib/encode/md5.js"></script>
+  <script src="lib/encode/base64.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/utf8_encode.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/directives.js"></script>
+
+  <!--  <script src="lib/scrollbar/js/jquery.tinyscrollbar.min.js"></script> -->
+  <!-- <script src="js/highcharts/js/highcharts.js"></script> -->
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <link href="lib/netdna.bootstrap/bootstrap-combined.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+</head>
+<body>
+    
+<div ng-include src="'partials/navbar.html'"></div>
+
+<div id="container-main">
+    <div ng-view></div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>
+
+</body>
+</html>

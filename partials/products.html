@@ -1,0 +1,47 @@
+<div class="container-fluid">
+	<div>
+    <h1>Beschikbare producten</h1>
+		
+		<table class="table table-striped" >
+			<thead>
+				<tr>
+					<th>Barcode</th>
+					<th>Naam</th>
+					<th>Prijs</th>
+					<th>Hoeveelheid</th>
+					<th><input type="text" ng-model="search.name" class="search-query dropdown-toggle input-search"></th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="product in productList.items | filter:search">
+					<td>
+						{{product.barcode}}
+					</td>
+					<td>
+						{{product.name}}
+					</td>
+					<td>
+						{{product.price}} euro
+					</td>
+					<td>
+						<input type="text" ng-model="product.amount" ng-show="hasCurrentShoppingList">
+					</td>
+					<td>
+						<a ng-show="hasCurrentShoppingList" ng-click="callToAddToProductList(product)"><button class="btn"><i class="icon-plus-sign"></i> Toevoegen..</button></a>
+					</td>
+				</tr>
+				<tr ng-show="hasCurrentShoppingList">
+					<td>
+						<a class="btn btn-primary" ng-show="hasCurrentShoppingList" href="#/shoppinglist/{{currentShoppingListId}}">Terug naar shoppinglijst</a>
+					</td>
+					<td colspan="4">
+						<div class="alert-succes-message"ng-show="hasCurrentShoppingList&&aProductHasBeenAdded">  
+							{{productThatJustHasBeenAdded.amount}} product(en) zijn toegevoegd.
+						</div>  
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

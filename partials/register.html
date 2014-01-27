@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <div class="alert alert-success" ng-show="isAccountCreated">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    Uw account is gemaakt! </div>
+  <div class="alert alert-error" ng-show="accountNotCreated">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    Uw account is niet aangemaakt, probeer het nog eens.</div>
+  <div style="font-color: red;" ng-repeat="error in errorMsg">
+    * {{error}}
+  </div>
+  <form class="form-horizontal">  
+    <div class="control-group">
+      <label class="control-label" for="inputFirstame">Naam</label>
+      <div class="controls">
+        <input type="text" class="register-input" id="inputName" placeholder="Naam" ng-model="userInfo.name" required ng-disabled="shouldCreateAccount">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputPassword">Wachtwoord</label>
+      <div class="controls">
+        <input type="password" class="register-input" id="inputPassword" placeholder="*********" ng-model="userInfo.password" required ng-disabled="shouldCreateAccount">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputPasswordRepeat">Herhaling Wachtwoord</label>
+      <div class="controls">
+        <input type="password" class="register-input" id="inputPasswordRepeat" placeholder="*********" ng-model="userInfo.passwordDigest" required ng-disabled="shouldCreateAccount">
+      </div>
+    </div>
+		<div class="control-group">
+      <label class="control-label" for="inputEmail">Email</label>
+      <div class="controls">
+        <input type="text" class="register-input" id="inputEmail" placeholder="info@example.com" ng-model="userInfo.email" required ng-disabled="shouldCreateAccount">
+      </div>
+    </div>
+		<div class="control-group">
+      <label class="control-label" for="inputTelnr">Telefoonnummer</label>
+      <div class="controls">
+        <input type="text" class="register-input" id="inputTelnr" placeholder="0612341234" ng-model="userInfo.telnr" required ng-disabled="shouldCreateAccount">
+      </div>
+    </div>
+    <input type="submit" ng-click="addUser(userInfo)" class="btn btn-primary" ng-disabled="shouldCreateAccount" value="Registreer!">
+  </form>
+</div>

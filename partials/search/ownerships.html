@@ -1,0 +1,81 @@
+<!-- <div ng-controller="OwnershipSearchCtrl"> -->
+  <div class="tag-filter">
+    <button class="btn" ng-click="removeTagFromSelection(tag)" ng-repeat="tag in addedTagsList"><i class="icon-remove-sign"></i> {{tag}}</button>
+  </div>
+  {{displayedEntityList}}
+  <div class="pull-right">
+    Sorteer op: 
+    <select class="select-sorting" onchange="sortSearchTable()" ng-model="searchOrder.orderChosen">
+      <option value="entity.name">Naam apparaat: </option>
+      <option value="lastMeasurement.startDate" ng-selected="true">Laatste meting: </option>
+      <option value="reactions.length">Aantal reacties: </option>
+      <!-- <option value="">Locatie: </option> -->
+      <option value="entity.type.name">Type apparaat: </option>
+      <option value="">Keren bezocht: </option>
+    </select>
+    <select class="select-sorting" onchange="sortWay()" ng-model="searchOrder.order">
+      <option value="true" >Oplopend: </option>
+      <option value="false" ng-selected="true">Aflopend: </option>
+    </select>
+  </div>
+  <form>
+    <a class="btn btn-mini btn-primary" href="#/vergelijk/apparaten">Vergelijk</a> 
+    <table class="table table-striped" >
+      <thead>
+        <tr style="font-size:13px;">
+          <th width="20px;"></th>
+          <th class="span3"></th>
+          <th class="span4"></th>
+          <th class="span2"></th>
+          <th class="span2"></th>
+          <th class=""></th>
+          <th width="40px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="ownership in displayedEntityList | orderBy: searchOrder.orderChosen : searchOrder.order">
+          <td width="20px;">
+            <input type="checkbox" ng:model="ownership.compareList.checked" ng-change="compareCookie()">
+          </td>
+          <td style="font-size:14px;">
+            <a href="#/apparaten/{{ownership.id}}" class="pull-left link-thumbnail-image-list"> 
+              <img class="thumbnail-image-list" ng-src="images/entities/{{ownership.entity.type.name}}.jpg"  width="50px" height="50px" />
+            </a>
+            <div>
+              <a href="#/apparaten/{{ownership.id}}">{{ownership.entity.name}}</a>
+              <br>{{ownership.manufacturer.name}} {{ownership.entity.type.name}}
+            </div>
+          </td>
+          <td>
+            <span ng-repeat="tagList in ownership.entity.tags" class="tags-in-table"> 
+              <a ng-click="addTag(tagList.tag.name)" href=""><i class="icon-plus-sign"></i> {{tagList.tag.name}}</a>, 
+            </span>
+    				<span ng-repeat="ownershipTagList in ownership.tags" class="tags-in-table">
+      				<a ng-click="addTag(ownershipTagList.name)" href=""><i class="icon-plus-sign"></i> {{ownershipTagList.name}}</a>,
+            </span>
+          </td>
+          <td>
+            {{ownership.locations[0].value}}
+          </td>
+          <td style="font-size:14px;" >
+            <div tooltip="Laatste meting op:">
+              {{ownership.lastMeasurement.startDate}}
+            </div>
+          </td>
+          <td>
+          </td>
+          <td ng-switch="ownership.reactions.length">
+           
+            <div tooltip="{{ownership.reactions.length || 0}} reactie(s) geplaatst ">
+              <span style="font-size:14px;">{{ownership.reactions.length || 0}}</span> <i class="icon-comment-alt"></i> 
+            </div>
+
+          </td>
+        </tr>
+      </tbody>
+    <tfoot><tr><td></td><td></td><td></td><tr></tfoot>  
+  </table>
+   
+  <a class="btn btn-mini btn-primary" href="#/vergelijk/apparaten">Vergelijk</a>
+  </form>
+<!-- </div> -->

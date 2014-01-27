@@ -1,0 +1,77 @@
+
+<div class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+  <div class="navbar-inner">
+    <div id="container" class="container">
+ 
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+ 
+      <!-- Be sure to leave the brand out there if you want it shown -->
+
+      <ul class="nav">
+        <li>
+          <a class="brand" id="brand-name" href="#" title="Naar beginpagina">
+          <i class="icon-home icon-white" id="home-icon"></i> Shop of the Future</a>
+        </li>
+      </ul>
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse collapse pull-left">
+        <!-- .nav, .navbar-search, .navbar-form, etc -->
+        <ul class="nav">
+          <li><a href="#/over" title="Nieuwsgierig!">About</a></li>
+        </ul>
+		<ul class="nav">
+          <li><a href="#/products" title="Producten!">Producten</a></li>
+        </ul>
+      </div>
+
+			<div ng-switch="isLoggedOn" ng-controller="LoginCtrl" class="pull-right"> 
+        <!-- if logged on -->
+
+        <ul class="nav" ng-switch-when="true">
+							
+          <li class="dropdown">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">{{name}}<strong class="caret"></strong></a>
+            <div class="dropdown-menu" id="dropdown-menu" style="padding: 15px; padding-bottom: 10px;">
+
+							<a href="#/myshoppinglists" >Mijn Shoppinglists</a>
+							
+              <div class="btn" ng-click="doLogout()" >Uitloggen</div>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="nav" ng-switch-default>  <!--  -default -->
+          <li class="divider-vertical"></li>
+          <li><a href="#/registreren">Registreren</a></li>
+          <li class="divider-vertical"></li>
+          <li class="dropdown">
+            <a stop-event='click' class="dropdown-toggle" href="#" data-toggle="dropdown">
+              <i class="icon-account icon-white"></i> Inloggen <strong class="caret"></strong>
+            </a>
+            <div stop-event='click' id="dropdown-menu" class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+              <form novalidate class="simple-form">
+                <input class="keep_open input-log-in" type="email" ng-model="account.email" placeholder="voorbeeld@email.com" /><br />
+                <input class="keep_open input-log-in" type="password" ng-model="account.password" placeholder="*********"/><br />
+                <button ng-click="logOn(account)" class="btn btn-info">Inloggen</button>
+              </form>
+            </div>
+          </li>
+          <li class="divider-vertical"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="showbar">
+  <div id="inner-showbar">
+    <div  class="select pull-right">
+
+    </div>
+  </div>
+</div>

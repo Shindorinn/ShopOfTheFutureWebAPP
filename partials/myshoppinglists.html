@@ -1,0 +1,51 @@
+<div class="container-fluid">
+	<div ng-controller="ShoppinglistCtrl">
+    <h1>Mijn Shoppinglists</h1>
+		<table class="table table-striped" >
+			<thead>
+				<tr>
+					<th class="span5">Naam</th>
+					<th class="span3">Prijs</th>
+					<th></th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr ng-repeat="list in myShoppingLists.lists">
+					<td>
+						<a href="#/shoppinglist/{{list.id}}">{{list.name}}</a>
+					</td>			
+					<td>
+						{{getThisShoppinglistTotal(list.id)}}
+					</td>
+					<td>
+						<a ng-click="deleteThisList(list.id)"><button class="btn"><i class="icon-remove-sign"></i></button></a>		
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<br>
+
+		<button class="btn" ng-click="open()">Creëer nieuwe shoppinglist</button>
+		<div modal="shouldBeOpen" close="close()" options="opts" >
+			<div class="modal-header">
+				<h4>Nieuwe Shoppinglijst</h4>
+			</div>
+			<div class="modal-body">
+				<div>
+					<table class="table table-striped">
+						<tr>
+							<td>Naam:</td><td><input type="text" ng-model="name"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success" ng-click="createShoppingList(name)">Creëer shoppinglist</button>
+				<button class="btn btn-danger cancel" ng-click="close()">Annuleren</button>
+			</div>
+		</div>
+				
+	</div>
+</div>
